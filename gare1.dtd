@@ -1,0 +1,17 @@
+<!ELEMENT gare (train+,usager*)>
+<!ELEMENT train (voiture*,commentaire?)>
+<!ATTLIST train numero ID #REQUIRED 
+                type CDATA #IMPLIED>
+<!ELEMENT voiture (resa*,bar*)>
+<!ATTLIST voiture numero CDATA #REQUIRED>
+<!ELEMENT commentaire (#PCDATA|numero)*>
+<!ELEMENT numero ANY>
+<!ELEMENT usager (prenom,nom)>
+<!ATTLIST usager id ID #REQUIRED>
+<!ELEMENT prenom (#PCDATA)>
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT resa EMPTY>
+<!ATTLIST resa numero ID #REQUIRED
+               id IDREF #REQUIRED>
+<!ELEMENT bar EMPTY>
+<!ATTLIST bar service CDATA #IMPLIED> 
