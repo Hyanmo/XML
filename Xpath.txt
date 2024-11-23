@@ -1,0 +1,41 @@
+1.Les titres de tous les films.
+/cinema/film/titre 
+
+2.Les titres des films ou joue Michel Blanc.
+/cinema/film[realisateur='Michel Blanc']/titre
+/cinema/film[role/acteur='Michel Blanc']/titre
+
+3.Les types de films répertoriés.
+//film/@type 
+
+4. Les rôles joués par Michel Blanc.
+/cinema/film/role[acteur='Michel Blanc']/nom 
+
+5. L’acteur principal de chaque film (premier dans la distribution).
+//film/role[1]/acteur 
+
+6. Le nom du producteur qui apparaît juste après Yves Rousset-Rouard.
+//producteur[nom='Yves Rousset-Rouard']/following-sibling::producteur[1]/nom 
+
+7. Les acteurs qui apparaissent avant Michel Blanc dans la distribution des films de 
+Patrice Leconte.
+/cinema/film[realisateur='Patrice Leconte']/role[acteur='Michel Blanc']/preceding-sibling::role/acteur
+
+8. Les réalisateurs des films où jouent Michel Blanc et Thierry Lhermite.
+//film[role/acteur='Michel Blanc'][role/acteur='Thierry Lhermite']/realisateur
+
+9. Les titres des films avec plus de 5 acteurs dans la distribution.
+//film[conut(role)>5]/titre 
+
+10. Les réalisateurs qui jouent dans au moins un de leurs films.
+//film[realisateur=role/acteur]/realisateur
+
+11. Les noms des producteurs de comédies. 
+//producteur[film/@ref=/cinema/film[@type='comédie']/@id]/nom
+
+12. Titre des films qui n’ont pas obtenu de prix.
+//film[not(prix)]/titre
+//film[count(prix)=0]/titre
+
+13. Acteurs qui jouent un personnage dont le nom contient 'Morin'.
+//role[contains(nom,'Morin')]/acteur
